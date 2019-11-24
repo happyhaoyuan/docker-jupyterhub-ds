@@ -16,6 +16,9 @@ rainbow_logging_handler
 # RUN sudo apt-get install zsh
 # RUN chsh -s $(which zsh)
 
+#install r
+RUN apt install r-base
+#sudo R |install.packages(c('repr', 'IRdisplay', 'IRkernel'), type = 'source') | IRkernel::installspec(user = FALSE) | quit()
 
 RUN apt-get update -y \
     && apt-get install -y \
