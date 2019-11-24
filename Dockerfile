@@ -12,6 +12,11 @@ pyarrow \
 fastparquet \
 rainbow_logging_handler
 
+#install zsh
+# RUN sudo apt-get install zsh
+# RUN chsh -s $(which zsh)
+
+
 RUN apt-get update -y \
     && apt-get install -y \
         cron wamerican wajig \
