@@ -31,6 +31,13 @@ docker run -d \
     -v `dirname $HOME`:/home_host \
     9434/jupyter_hub:0.0.1
 ```
+
+for windows:
+
+```
+docker run -d --name jupyter-hub --hostname jupyter-hub --log-opt max-size=50m -p 8000:8000 -p 5006:5006 -e DOCKER_USER=haoyuan -e DOCKER_USER_ID=1000 -e DOCKER_PASSWORD=haoyuan -e DOCKER_GROUP_ID=1000 -e DOCKER_ADMIN_USER=haoyuan -v ..:/workdir -v ..:/home_host 9434/jupyter_hub:0.0.1
+```
+
 ```
 docker ps
 docker restart {container_id}
