@@ -17,8 +17,8 @@ rainbow_logging_handler
 # RUN chsh -s $(which zsh)
 
 #install r
-RUN apt install r-base
-RUN apt-get install libzmq3-dev libcurl4-openssl-dev libssl-dev jupyter-core jupyter-client
+#RUN apt install r-base
+#RUN apt-get install libzmq3-dev libcurl4-openssl-dev libssl-dev jupyter-core jupyter-client
 #sudo R |install.packages(c('repr', 'IRdisplay', 'IRkernel'), type = 'source') | IRkernel::installspec(user = FALSE) | quit()
 
 RUN apt-get update -y \
