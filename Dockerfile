@@ -53,7 +53,8 @@ RUN apt-get update \
     && apt-get autoremove \
     && apt-get autoclean
     
-RUN Rscript /scripts/install_r.r
+COPY settings/install_r.R /scripts/
+RUN Rscript /scripts/install_r.R
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget \
