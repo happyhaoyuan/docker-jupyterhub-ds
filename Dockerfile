@@ -32,3 +32,37 @@ RUN apt-get update -y \
 COPY settings/proxychains.conf /etc/proxychains.conf
 
 EXPOSE 5006
+
+RUN DEBIAN_FRONTEND=noninteractive \
+    && apt-get update \
+    && apt-get install -y \
+        r-base-dev \
+    && apt-get autoremove \
+    && apt-get autoclean
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libxml2-dev \
+        libcairo2-dev \
+        libzmq3-dev \
+        libssl-dev \
+        jupyter-core \
+        jupyter-client \
+        libcurl4-openssl-dev \
+        openjdk-8-jdk r-cran-rjava \
+    && apt-get autoremove \
+    && apt-get autoclean
+    
+RUN Rscript /scripts/install_r.r
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends wget \
+    && rstudio_version=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
+    && rstudio_version_sub=${rstudio_version%-*} \
+    && wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${rstudio_version_sub}-amd64.deb -O /rstudio-server.deb \
+    && apt-get install -y --no-install-recommends /rstudio-server.deb \
+    && rm /rstudio-server.deb 
+
+EXPOSE 8787
+
+COPY settings/Rprofile.site /usr/local/lib/R/etc/
