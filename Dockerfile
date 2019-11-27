@@ -24,7 +24,8 @@ rainbow_logging_handler
 RUN apt-get update -y \
     && apt-get install -y \
         cron wamerican wajig \
-        proxychains wget \
+        proxychains wget git-lfs \
+        highlight \
     && apt-get autoremove \
     && apt-get clean
 
